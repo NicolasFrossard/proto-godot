@@ -2,9 +2,10 @@
 	"left_portrait": "res://resources/portraits/old_lady.png",
 	"right_portrait": "res://resources/portraits/hero.png",
 	"entries": [
-		{"name": "Mysterious old lady", "text": "Hello, do you want a cookie?", "active_portrait": "left"},
-		{"name": "Mysterious man", "text": "My cookies are excellent.", "active_portrait": "left"},
-		{"name": "The Hero", "text": "A cookie sounds good!", "active_portrait": "right"},
-		{"name": "Mysterious old lady", "text": "Hehehe, little does he know these cookies are magic.", "active_portrait": "left"},
+		{"mode": "narration", "text": "One morning, at the Ashina temple..."},
+		{"mode": "conversation", "name": "Mysterious old lady", "text": "Hello, do you want a cookie?", "active_portrait": "left"},
+		{"mode": "conversation", "name": "Mysterious man", "text": "My cookies are excellent.", "active_portrait": "left"},
+		{"mode": "conversation", "name": "The Hero", "text": "A cookie sounds good!", "active_portrait": "right"},
+		{"mode": "conversation", "name": "Mysterious old lady", "text": "Hehehe... little does he know these cookies are magic.", "active_portrait": "left"},
 	]	
 }

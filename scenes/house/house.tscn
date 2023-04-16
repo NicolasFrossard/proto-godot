@@ -9,6 +9,6 @@ script = ExtResource( 2 )
 [node name="HouseUI" type="Node2D" parent="."]
 
 [node name="HouseBackground" type="Sprite" parent="HouseUI"]
-position = Vector2( 514, 302 )
-scale = Vector2( 0.505859, 0.476043 )
+position = Vector2( 524, 297 )
+scale = Vector2( 0.8375, 0.916545 )
 texture = ExtResource( 1 )

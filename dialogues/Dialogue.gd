@@ -30,14 +30,32 @@ func next_line():
 
 func read_line():
 	var dialogue_entry = dialogue.entries[current_dialogue_id]
-	$MarginContainer/ColorRect/ColorRect/NameLabel.text = dialogue_entry['name']
-	$MarginContainer/ColorRect/ColorRect/TextLabel.text = dialogue_entry['text']
 	
-	var active_portrait = dialogue_entry['active_portrait']
-	if (dialogue_entry['active_portrait'] == 'left'):
-		$LeftPortrait.modulate.a = 1
-		$RightPortrait.modulate.a = 0.5
+	if (dialogue_entry.mode == 'narration'):
+		read_narration_line(dialogue_entry)
+	
+	if (dialogue_entry.mode == 'conversation'):
+		read_conversation_line(dialogue_entry)
+	
+
+func read_narration_line(entry):
+		$LeftPortrait.visible = false
+		$RightPortrait.visible = false
+		$MarginContainer/ColorRect/ColorRect/NameLabel.visible = false
+		$MarginContainer/ColorRect/ColorRect/TextLabel.text = entry['text']
+
+func read_conversation_line(entry):
+		$LeftPortrait.visible = true
+		$RightPortrait.visible = true
+		$MarginContainer/ColorRect/ColorRect/NameLabel.visible = true
+		$MarginContainer/ColorRect/ColorRect/NameLabel.text = entry['name']
+		$MarginContainer/ColorRect/ColorRect/TextLabel.text = entry['text']
 		
-	if (dialogue_entry['active_portrait'] == 'right'):
-		$LeftPortrait.modulate.a = 0.5
-		$RightPortrait.modulate.a = 1
+		var active_portrait = entry['active_portrait']
+		if (active_portrait == 'left'):
+			$LeftPortrait.modulate.a = 1
+			$RightPortrait.modulate.a = 0.5
+			
+		if (active_portrait == 'right'):
+			$LeftPortrait.modulate.a = 0.5
+			$RightPortrait.modulate.a = 1
