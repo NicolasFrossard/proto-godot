@@ -2,11 +2,15 @@
 	"left_portrait": "res://resources/portraits/old_lady.png",
 	"right_portrait": "res://resources/portraits/hero.png",
 	"entries": [
-		{"mode": "narration", "text": "One morning, at the Ashina temple..."},
-		{"mode": "conversation", "name": "Mysterious old lady", "text": "Hello, do you want a cookie?", "active_portrait": "left"},
-		{"mode": "conversation", "name": "Mysterious man", "text": "My cookies are excellent.", "active_portrait": "left"},
-		{"mode": "conversation", "name": "The Hero", "text": "A cookie sounds good!", "active_portrait": "right"},
-		{"mode": "conversation", "name": "Mysterious old lady", "text": "Hehehe... little does he know these cookies are magic.", "active_portrait": "left"},
-		{"mode": "choice", "left_choice": {"resource": "res://resources/choices/RefuseTheCookie.jpg"}, "right_choice": {"resource": "res://resources/choices/EatTheCookie.jpg"}}
-	]	
+		{"id": 0, "mode": "narration", "text": "One morning, at the Ashina temple..."},
+		{"id": 1, "mode": "conversation", "name": "Mysterious old lady", "text": "Hello, do you want a cookie?", "active_portrait": "left"},
+		{"id": 2, "mode": "conversation", "name": "Mysterious man", "text": "My cookies are excellent.", "active_portrait": "left"},
+		{"id": 3, "mode": "conversation", "name": "The Hero", "text": "A cookie sounds good!", "active_portrait": "right"},
+		{"id": 4, "mode": "conversation", "name": "Mysterious old lady", "text": "Hehehe... little does he know these cookies are magic.", "active_portrait": "left"},
+		{"id": 5, "mode": "choice", 
+			"left_choice": {"resource": "res://resources/choices/RefuseTheCookie.jpg", "next_choice_index": 6}, 
+			"right_choice": {"resource": "res://resources/choices/EatTheCookie.jpg"}
+		},
+		{"id": 6, "mode": "conversation", "name": "The Hero", "text": "I... I refuse the cookie!!", "active_portrait": "right", "next_label": "> Quit", "next_action": "QUIT_GAME", }
+	]
 }

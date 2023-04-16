@@ -139,3 +139,4 @@ margin_bottom = 347.0
 texture_normal = ExtResource( 6 )
 
 [connection signal="pressed" from="MarginContainer/ColorRect/NextButton" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="ChoiceContainer/FirstChoiceButton" to="." method="_on_FirstChoiceButton_pressed"]
