@@ -1,0 +1,73 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://resources/BetterPixelsFont.tres" type="DynamicFont" id=1]
+[ext_resource path="res://scenes/menu/Menu.gd" type="Script" id=2]
+[ext_resource path="res://resources/menu_background.jpg" type="Texture" id=3]
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0, 0, 0, 1 )
+
+[node name="Menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 17.0
+margin_top = -5.0
+margin_right = 17.0
+margin_bottom = -5.0
+script = ExtResource( 2 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 59.0
+margin_top = 311.0
+margin_right = 412.0
+margin_bottom = 568.0
+
+[node name="StartGameButton" type="Button" parent="VBoxContainer"]
+margin_right = 353.0
+margin_bottom = 57.0
+custom_fonts/font = ExtResource( 1 )
+custom_styles/normal = SubResource( 2 )
+text = "Start Game"
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+modulate = Color( 1, 1, 1, 0 )
+margin_top = 61.0
+margin_right = 353.0
+margin_bottom = 81.0
+
+[node name="CreditsButton" type="Button" parent="VBoxContainer"]
+margin_top = 85.0
+margin_right = 353.0
+margin_bottom = 142.0
+custom_fonts/font = ExtResource( 1 )
+custom_styles/normal = SubResource( 1 )
+text = "Credits"
+
+[node name="Button2" type="Button" parent="VBoxContainer"]
+modulate = Color( 1, 1, 1, 0 )
+margin_top = 146.0
+margin_right = 353.0
+margin_bottom = 166.0
+
+[node name="QuitGameButton" type="Button" parent="VBoxContainer"]
+margin_top = 170.0
+margin_right = 353.0
+margin_bottom = 227.0
+custom_fonts/font = ExtResource( 1 )
+custom_styles/normal = SubResource( 3 )
+text = "Quit Game"
+
+[node name="MenuBackground" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.52549 )
+position = Vector2( 501, 296 )
+scale = Vector2( 0.870833, 0.895555 )
+z_index = -3
+texture = ExtResource( 3 )
+
+[connection signal="pressed" from="VBoxContainer/QuitGameButton" to="." method="_on_QuitGameButton_pressed"]
