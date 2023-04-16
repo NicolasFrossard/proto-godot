@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://resources/BetterPixelsFont.tres" type="DynamicFont" id=1]
 [ext_resource path="res://scenes/menu/Menu.gd" type="Script" id=2]
@@ -12,6 +12,36 @@ bg_color = Color( 0, 0, 0, 1 )
 
 [sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="Animation" id=4]
+resource_name = "Fade"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
 
 [node name="Menu" type="Control"]
 anchor_right = 1.0
@@ -69,6 +99,21 @@ position = Vector2( 501, 296 )
 scale = Vector2( 0.870833, 0.895555 )
 z_index = -3
 texture = ExtResource( 3 )
+
+[node name="StartGameTransitionRect" type="ColorRect" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -48.0
+margin_top = -31.0
+margin_right = 24.0
+margin_bottom = 29.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="StartGameTransitionRect"]
+anims/Fade = SubResource( 4 )
+anims/RESET = SubResource( 5 )
 
 [connection signal="pressed" from="VBoxContainer/StartGameButton" to="." method="_on_StartGameButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/QuitGameButton" to="." method="_on_QuitGameButton_pressed"]
