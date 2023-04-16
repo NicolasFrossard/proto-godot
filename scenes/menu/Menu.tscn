@@ -70,4 +70,5 @@ scale = Vector2( 0.870833, 0.895555 )
 z_index = -3
 texture = ExtResource( 3 )
 
+[connection signal="pressed" from="VBoxContainer/StartGameButton" to="." method="_on_StartGameButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/QuitGameButton" to="." method="_on_QuitGameButton_pressed"]
