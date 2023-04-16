@@ -1,10 +1,42 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://resources/fonts/DialogueTextFonts.tres" type="DynamicFont" id=1]
 [ext_resource path="res://resources/fonts/CharNameFonts.tres" type="DynamicFont" id=2]
 [ext_resource path="res://dialogues/Dialogue.gd" type="Script" id=3]
 [ext_resource path="res://resources/portraits/old_lady.png" type="Texture" id=4]
 [ext_resource path="res://resources/portraits/hero.png" type="Texture" id=5]
+[ext_resource path="res://resources/choices/EatTheCookie.jpg" type="Texture" id=6]
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:margin_top")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -211.0 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "open_box"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:margin_top")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -211.0, -402.0 ]
+}
 
 [node name="DialoguePlayer" type="CanvasLayer"]
 script = ExtResource( 3 )
@@ -14,56 +46,57 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 30.0
-margin_top = -210.0
+margin_top = -211.0
 margin_right = -30.0
 margin_bottom = -30.0
 
 [node name="ColorRect" type="ColorRect" parent="MarginContainer"]
 margin_right = 964.0
-margin_bottom = 180.0
-color = Color( 0.521569, 0.670588, 0.729412, 1 )
-
-[node name="ColorRect" type="ColorRect" parent="MarginContainer/ColorRect"]
-margin_left = 10.0
-margin_top = 10.0
-margin_right = 954.0
-margin_bottom = 170.0
+margin_bottom = 181.0
 color = Color( 0, 0, 0, 1 )
 
-[node name="NameLabel" type="RichTextLabel" parent="MarginContainer/ColorRect/ColorRect"]
-margin_left = 16.0
-margin_top = 11.0
-margin_right = 703.0
-margin_bottom = 59.0
+[node name="NextButton" type="Button" parent="MarginContainer/ColorRect"]
+anchor_right = 0.718
+anchor_bottom = 0.415
+margin_left = 818.0
+margin_top = 118.0
+margin_right = 260.208
+margin_bottom = 88.6
+custom_fonts/font = ExtResource( 1 )
+text = "> Next"
+
+[node name="NameNode" type="Node2D" parent="MarginContainer/ColorRect"]
+
+[node name="NameLabel" type="RichTextLabel" parent="MarginContainer/ColorRect/NameNode"]
+margin_left = 26.0
+margin_top = 21.0
+margin_right = 713.0
+margin_bottom = 69.0
 custom_fonts/normal_font = ExtResource( 2 )
 text = "Name"
 scroll_active = false
 
-[node name="TextLabel" type="RichTextLabel" parent="MarginContainer/ColorRect/ColorRect"]
-margin_left = 50.0
-margin_top = 73.0
-margin_right = 894.0
-margin_bottom = 145.0
+[node name="TextNode" type="Node2D" parent="MarginContainer/ColorRect"]
+
+[node name="TextLabel" type="RichTextLabel" parent="MarginContainer/ColorRect/TextNode"]
+margin_left = 60.0
+margin_top = 83.0
+margin_right = 780.0
+margin_bottom = 155.0
 custom_fonts/normal_font = ExtResource( 1 )
 text = "Test text"
 
-[node name="Button" type="Button" parent="MarginContainer/ColorRect/ColorRect"]
-anchor_right = 0.718
-anchor_bottom = 0.415
-margin_left = 808.0
-margin_top = 108.0
-margin_right = 250.208
-margin_bottom = 78.6
-custom_fonts/font = ExtResource( 1 )
-text = "> Next"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MarginContainer"]
+anims/RESET = SubResource( 1 )
+anims/open_box = SubResource( 2 )
 
 [node name="LeftPortrait" type="Sprite" parent="."]
-position = Vector2( 207, 284.75 )
+position = Vector2( 207, 283.75 )
 scale = Vector2( 1.17333, 1.25148 )
 texture = ExtResource( 4 )
 
 [node name="RightPortrait" type="Sprite" parent="."]
-position = Vector2( 817, 285 )
+position = Vector2( 817, 283 )
 scale = Vector2( 1.17333, 1.25148 )
 texture = ExtResource( 5 )
 
@@ -80,4 +113,29 @@ margin_bottom = 615.0
 mouse_filter = 2
 color = Color( 1, 1, 1, 0.129412 )
 
-[connection signal="pressed" from="MarginContainer/ColorRect/ColorRect/Button" to="." method="_on_Button_pressed"]
+[node name="ChoiceContainer" type="HBoxContainer" parent="."]
+anchor_left = 0.374
+anchor_top = 0.487
+anchor_right = 0.496
+anchor_bottom = 1.0
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="FirstChoiceButton" type="TextureButton" parent="ChoiceContainer"]
+margin_right = 130.0
+margin_bottom = 347.0
+texture_normal = ExtResource( 6 )
+
+[node name="Button" type="Button" parent="ChoiceContainer"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 134.0
+margin_right = 146.0
+margin_bottom = 347.0
+
+[node name="SecondChoiceButton" type="TextureButton" parent="ChoiceContainer"]
+margin_left = 150.0
+margin_right = 280.0
+margin_bottom = 347.0
+texture_normal = ExtResource( 6 )
+
+[connection signal="pressed" from="MarginContainer/ColorRect/NextButton" to="." method="_on_Button_pressed"]
