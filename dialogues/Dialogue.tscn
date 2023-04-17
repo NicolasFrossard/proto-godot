@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://resources/fonts/DialogueTextFonts.tres" type="DynamicFont" id=1]
 [ext_resource path="res://resources/fonts/CharNameFonts.tres" type="DynamicFont" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://resources/portraits/old_lady.png" type="Texture" id=4]
 [ext_resource path="res://resources/portraits/hero.png" type="Texture" id=5]
 [ext_resource path="res://resources/choices/EatTheCookie.jpg" type="Texture" id=6]
+[ext_resource path="res://dialogues/ChoiceContainer.gd" type="Script" id=7]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -120,6 +121,7 @@ anchor_right = 0.496
 anchor_bottom = 1.0
 margin_right = 40.0
 margin_bottom = 40.0
+script = ExtResource( 7 )
 
 [node name="FirstChoiceButton" type="TextureButton" parent="ChoiceContainer"]
 margin_right = 130.0
@@ -139,4 +141,9 @@ margin_bottom = 347.0
 texture_normal = ExtResource( 6 )
 
 [connection signal="pressed" from="MarginContainer/ColorRect/NextButton" to="." method="_on_Button_pressed"]
+[connection signal="mouse_entered" from="ChoiceContainer/FirstChoiceButton" to="ChoiceContainer" method="_on_FirstChoiceButton_mouse_entered"]
+[connection signal="mouse_exited" from="ChoiceContainer/FirstChoiceButton" to="ChoiceContainer" method="_on_FirstChoiceButton_mouse_exited"]
 [connection signal="pressed" from="ChoiceContainer/FirstChoiceButton" to="." method="_on_FirstChoiceButton_pressed"]
+[connection signal="mouse_entered" from="ChoiceContainer/SecondChoiceButton" to="ChoiceContainer" method="_on_SecondChoiceButton_mouse_entered"]
+[connection signal="mouse_exited" from="ChoiceContainer/SecondChoiceButton" to="ChoiceContainer" method="_on_SecondChoiceButton_mouse_exited"]
+[connection signal="pressed" from="ChoiceContainer/SecondChoiceButton" to="." method="_on_SecondChoiceButton_pressed"]

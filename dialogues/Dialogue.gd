@@ -99,11 +99,19 @@ func play_open_box_animation(open):
 
 func _on_FirstChoiceButton_pressed():
 	assert (current_script_entry && current_script_entry.left_choice)
+	act_on_choice(current_script_entry.left_choice)
+
+func _on_SecondChoiceButton_pressed():
+	assert (current_script_entry && current_script_entry.right_choice)
+	act_on_choice(current_script_entry.right_choice)
+		
+func act_on_choice(choice):
 	$ChoiceContainer.visible = false
-	if (current_script_entry.left_choice.next_choice_index):
-		next_script_index = current_script_entry.left_choice.next_choice_index
+	if (choice.next_choice_index):
+		next_script_index = choice.next_choice_index
 		play_open_box_animation(false)
 		yield(_anim_player, "animation_finished")
 		toggle_choice_mode(false)
 		next_line()
 		
+

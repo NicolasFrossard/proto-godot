@@ -9,8 +9,10 @@
 		{"id": 4, "mode": "conversation", "name": "Mysterious old lady", "text": "Hehehe... little does he know these cookies are magic.", "active_portrait": "left"},
 		{"id": 5, "mode": "choice", 
 			"left_choice": {"resource": "res://resources/choices/RefuseTheCookie.jpg", "next_choice_index": 6}, 
-			"right_choice": {"resource": "res://resources/choices/EatTheCookie.jpg"}
+			"right_choice": {"resource": "res://resources/choices/EatTheCookie.jpg", "next_choice_index": 7}, 
 		},
-		{"id": 6, "mode": "conversation", "name": "The Hero", "text": "I... I refuse the cookie!!", "active_portrait": "right", "next_label": "> Quit", "next_action": "QUIT_GAME", }
+		{"id": 6, "mode": "conversation", "name": "The Hero", "text": "I... I refuse the cookie!!", "active_portrait": "right", "next_label": "> Quit", "next_action": "QUIT_GAME", },
+		{"id": 7, "mode": "conversation", "name": "The Hero", "text": "I... I accept the cookie!!", "active_portrait": "right", "next_label": "> Take"}
+		{"id": 8, "mode": "cookie_game"}
 	]
 }
