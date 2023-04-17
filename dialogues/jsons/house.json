@@ -12,7 +12,7 @@
 			"right_choice": {"resource": "res://resources/choices/EatTheCookie.jpg", "next_choice_index": 7}, 
 		},
 		{"id": 6, "mode": "conversation", "name": "The Hero", "text": "I... I refuse the cookie!!", "active_portrait": "right", "next_label": "> Quit", "next_action": "QUIT_GAME", },
-		{"id": 7, "mode": "conversation", "name": "The Hero", "text": "I... I accept the cookie!!", "active_portrait": "right", "next_label": "> Take"}
-		{"id": 8, "mode": "cookie_game"}
+		{"id": 7, "mode": "conversation", "name": "The Hero", "text": "I... I accept the cookie!!", "active_portrait": "right", "next_label": "> Take"},
+		{"id": 8, "mode": "game", "resource": "res://scenes/games/CookieGame.tscn"}
 	]
 }

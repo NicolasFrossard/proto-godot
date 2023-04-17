@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/games/CookieRigidBody.tscn" type="PackedScene" id=1]
+[ext_resource path="res://resources/fonts/CharNameFonts.tres" type="DynamicFont" id=2]
+
+[node name="CookieGame" type="Node2D"]
+z_index = 100
+
+[node name="Collisions" type="Node2D" parent="."]
+position = Vector2( 60, 329 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Collisions"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisions/StaticBody2D"]
+position = Vector2( -60, -329 )
+polygon = PoolVector2Array( 87, 341, 292, 302, 556, 334, 851, 332, 971, 347, 975, 536, 877, 553, 526, 554, 256, 538, 76, 550, 76, 356, 57, 359, 55, 573, 946, 571, 994, 547, 992, 326, 776, 291, 584, 280, 259, 280, 54, 340 )
+
+[node name="RigidBody2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 357, 426 )
+z_index = 200
+
+[node name="Label" type="Label" parent="."]
+margin_left = 73.0
+margin_top = 233.0
+margin_right = 994.0
+margin_bottom = 316.0
+custom_fonts/font = ExtResource( 2 )
+text = "Grab the cookie! (it's super difficult)"

@@ -54,6 +54,13 @@ func read_line():
 	if (current_script_entry.mode == 'choice'):
 		toggle_choice_mode(true)
 		read_choice_line()
+	
+	if (current_script_entry.mode == 'game'):
+		toggle_choice_mode(true)
+		play_open_box_animation(true)
+		yield(_anim_player, "animation_finished")
+		var game_instance : Node2D = load(current_script_entry.resource).instance()
+		add_child(game_instance)
 
 func toggle_choice_mode(toggle):
 	$LeftPortrait.visible = !toggle
