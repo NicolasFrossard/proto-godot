@@ -13,6 +13,7 @@
 		},
 		{"id": 6, "mode": "conversation", "name": "The Hero", "text": "I... I refuse the cookie!!", "active_portrait": "right", "next_label": "> Quit", "next_action": "QUIT_GAME", },
 		{"id": 7, "mode": "conversation", "name": "The Hero", "text": "I... I accept the cookie!!", "active_portrait": "right", "next_label": "> Take"},
-		{"id": 8, "mode": "game", "resource": "res://scenes/games/CookieGame.tscn"}
+		{"id": 8, "mode": "game", "resource": "res://scenes/games/CookieGame.tscn", "next_choice_index": 9},
+		{"id": 9, "mode": "conversation", "name": "The Hero", "text": "Nom, nom, nom... this is delicious !", "active_portrait": "right", "next_label": "> Quit", "next_action": "QUIT_GAME", },
 	]
 }

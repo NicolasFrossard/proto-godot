@@ -61,6 +61,14 @@ func read_line():
 		yield(_anim_player, "animation_finished")
 		var game_instance : Node2D = load(current_script_entry.resource).instance()
 		add_child(game_instance)
+		next_script_index = current_script_entry.next_choice_index
+		game_instance.connect("game_success", self, "game_finished")
+
+func game_finished():
+	play_open_box_animation(false)
+	yield(_anim_player, "animation_finished")
+	toggle_choice_mode(false)
+	next_line()
 
 func toggle_choice_mode(toggle):
 	$LeftPortrait.visible = !toggle
