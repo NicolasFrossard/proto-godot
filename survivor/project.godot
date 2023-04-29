@@ -51,6 +51,13 @@ right={
  ]
 }
 
+[layer_names]
+
+2d_render/layer_1="World"
+2d_render/layer_2="Player"
+2d_render/layer_3="Ennemy"
+2d_render/layer_4="Loot"
+
 [physics]
 
 common/enable_pause_aware_picking=true

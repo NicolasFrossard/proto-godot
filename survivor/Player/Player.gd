@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 var speed = 80  # speed in pixels/sec
 var velocity = Vector2.ZERO
+var hp = 80
 
 onready var sprite = $Sprite
 onready var walkTimer = get_node("WalkTimer")
@@ -19,7 +20,7 @@ func get_input():
 	# Make sure diagonal movement isn't faster: use normalized
 	velocity = velocity.normalized() * speed
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	get_input()
 	
 	# Face left or right, depending on velocity
@@ -38,3 +39,8 @@ func _physics_process(delta):
 	
 	velocity = move_and_slide(velocity)
 	
+
+
+func _on_Hurtbox_hurt(damage):
+	hp -= damage
+	print(hp)
