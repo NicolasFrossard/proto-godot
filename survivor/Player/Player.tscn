@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Textures/Player/player_sprite.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.gd" type="Script" id=2]
@@ -10,6 +10,9 @@ height = 10.0
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 4.5, 8.5 )
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 369.716
 
 [node name="Player" type="KinematicBody2D" groups=["player"]]
 script = ExtResource( 2 )
@@ -36,6 +39,26 @@ collision_layer = 2
 position = Vector2( 1.5, 2.5 )
 shape = SubResource( 2 )
 
+[node name="Attack" type="Node2D" parent="."]
+
+[node name="IceSpearTimer" type="Timer" parent="Attack"]
+wait_time = 1.5
+
+[node name="IceSpearAttackTimer" type="Timer" parent="Attack/IceSpearTimer"]
+wait_time = 0.075
+
+[node name="EnnemyDetectionArea" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnnemyDetectionArea"]
+shape = SubResource( 3 )
+
 [connection signal="hurt" from="Hurtbox" to="." method="_on_Hurtbox_hurt"]
+[connection signal="timeout" from="Attack/IceSpearTimer" to="." method="_on_IceSpearTimer_timeout"]
+[connection signal="timeout" from="Attack/IceSpearTimer/IceSpearAttackTimer" to="." method="_on_IceSpearAttackTimer_timeout"]
+[connection signal="body_entered" from="EnnemyDetectionArea" to="." method="_on_EnnemyDetectionArea_body_entered"]
+[connection signal="body_exited" from="EnnemyDetectionArea" to="." method="_on_EnnemyDetectionArea_body_exited"]
 
 [editable path="Hurtbox"]

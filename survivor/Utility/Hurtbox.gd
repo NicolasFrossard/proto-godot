@@ -23,6 +23,8 @@ func _on_Hurtbox_area_entered(area):
 						area.temp_disable()
 			var damage = area.damage
 			emit_signal("hurt", damage)
+			if area.has_method("ennemy_hit"):
+				area.ennemy_hit(1)
 
 
 func _on_DisableTimer_timeout():

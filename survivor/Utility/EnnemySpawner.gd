@@ -18,7 +18,7 @@ class Spawner:
 
 var spawners = [
 	Spawner.new(0, 60, "res://Ennemy/Ennemy.tscn", 1, 1),
-	Spawner.new(5, 60, "res://Ennemy/Ennemy.tscn", 10, 1)
+	Spawner.new(5, 60, "res://Ennemy/Ennemy.tscn", 10, 10)
 ]
 
 onready var player = get_tree().get_nodes_in_group("player")[0]

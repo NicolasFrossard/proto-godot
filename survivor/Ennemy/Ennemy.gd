@@ -24,6 +24,6 @@ func _physics_process(_delta):
 
 func _on_Hurtbox_hurt(damage):
 	hp -= damage
-	print('Ennemy hp is now ' + hp)
+	print('Ennemy hp is now ' + str(hp))
 	if hp <= 0:
 		queue_free()
